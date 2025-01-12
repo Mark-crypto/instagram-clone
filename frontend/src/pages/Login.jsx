@@ -2,11 +2,13 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useFormik } from "formik";
 import "../styles/Login.css";
 import { FaFacebook } from "react-icons/fa";
 import LoginValidation from "../schemas/loginSchema";
+import bcrypt from "bcryptjs";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
   const image =
@@ -20,10 +22,38 @@ const Login = () => {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { email, password } = formik.values;
+    if (!email || !password) {
+      toast.error("Please fill all the fields");
+      return;
+    }
+    if (formik.errors.email || formik.errors.password) {
+      toast.error("Invalid email or password");
+      return;
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+    useEffect(() => {
+      const login = async () => {
+        try {
+          const response = await axios.post(
+            "http://localhost:3000/api/auth/login",
+            { email, password: hashedPassword }
+          );
+          if (response.status === 200) {
+            toast.success("Logged in successfully");
+          }
+        } catch (error) {
+          toast.error("Invalid email or password");
+        }
+      };
+      //login();
+    }, [hashedPassword]);
     console.log("Submitted");
   };
   return (
     <>
+      <ToastContainer />
       <Form className="login-form">
         <img src={image} alt="instagram" />
         <Form.Group className="mb-3">

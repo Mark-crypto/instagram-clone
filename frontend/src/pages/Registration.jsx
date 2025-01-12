@@ -1,11 +1,13 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useFormik } from "formik";
 import { FaFacebook } from "react-icons/fa";
 import "../styles/Registration.css";
 import RegistrationValidation from "../schemas/registrationSchema.js";
+import bcrypt from "bcryptjs";
+import { toast, ToastContainer } from "react-toastify";
 
 const Registration = () => {
   const image =
@@ -24,10 +26,56 @@ const Registration = () => {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
+    const {
+      username,
+      fullname,
+      email,
+      profilePhoto,
+      bio,
+      confirmPassword,
+      password,
+    } = formik.values;
+    if (!username || !fullname || !email || !password || !confirmPassword) {
+      toast.error("Please fill all the fields");
+      return;
+    }
+    if (
+      formik.errors.username ||
+      formik.errors.fullname ||
+      formik.errors.email ||
+      formik.errors.password ||
+      formik.errors.confirmPassword
+    ) {
+      toast.error("Invalid user input");
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+    useEffect(() => {
+      const registration = async () => {
+        try {
+          const response = await axios.post(
+            "http://localhost:3000/api/auth/registration",
+            { ...formik.values, password: hashedPassword }
+          );
+          if (response.status === 200) {
+            toast.success("Registration successful");
+          }
+        } catch (error) {
+          toast.error("Invalid user input");
+        }
+      };
+      //registration()
+    }, [hashedPassword]);
     console.log("Submitted");
   };
   return (
     <>
+      <ToastContainer />
       <Form className="registration-form">
         <img src={image} alt="instagram" />
         <h5
