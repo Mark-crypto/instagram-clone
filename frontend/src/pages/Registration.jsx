@@ -62,7 +62,7 @@ const Registration = () => {
             "http://localhost:3000/api/auth/registration",
             { ...formik.values, password: hashedPassword }
           );
-          if (response.status === 200) {
+          if (response.status === 201) {
             toast.success("Registration successful");
           }
         } catch (error) {
@@ -153,9 +153,6 @@ const Registration = () => {
             value={formik.values.profilePhoto}
             onChange={formik.handleChange}
           />
-          {formik.touched.profilePhoto && formik.errors.profilePhoto ? (
-            <small style={{ color: "red" }}>{formik.errors.profilePhoto}</small>
-          ) : null}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>

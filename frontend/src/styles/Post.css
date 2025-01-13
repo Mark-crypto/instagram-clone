@@ -1,0 +1,11 @@
+.post-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 60px auto;
+  border: 1px solid rgb(190, 190, 190);
+}
+.post-form img {
+  height: 50px;
+  margin: 20px 50px 10px 50px;
+}
