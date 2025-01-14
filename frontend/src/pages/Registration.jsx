@@ -8,6 +8,7 @@ import "../styles/Registration.css";
 import RegistrationValidation from "../schemas/registrationSchema.js";
 import bcrypt from "bcryptjs";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
   const image =

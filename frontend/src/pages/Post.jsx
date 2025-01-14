@@ -42,6 +42,7 @@ const Post = () => {
   };
   return (
     <>
+      <ToastContainer />
       <Form className="post-form">
         <img src={image} alt="instagram" />
         <Form.Group controlId="formFile" className="mb-3">

@@ -9,6 +9,7 @@ import { FaFacebook } from "react-icons/fa";
 import LoginValidation from "../schemas/loginSchema";
 import bcrypt from "bcryptjs";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const image =
