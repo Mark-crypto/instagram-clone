@@ -6,12 +6,15 @@ import "../styles/Profile.css";
 import Post from "./Post";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Follow from "../components/FollowBtn";
+import Unfollow from "../components/UnfollowBtn";
 
 const Profile = () => {
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
+  const [followers, setFollowers] = useState(0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -47,10 +50,12 @@ const Profile = () => {
           <div className="profile_followers">
             <h4>2</h4>
             <p>Followers</p>
+            <Follow followers={followers} setFollowers={setFollowers} />
           </div>
           <div className="profile_following">
-            <h4>2</h4>
+            <h4>10</h4>
             <p>Following</p>
+            <Unfollow followers={followers} setFollowers={setFollowers} />
           </div>
         </div>
         <div className="profile_info">
