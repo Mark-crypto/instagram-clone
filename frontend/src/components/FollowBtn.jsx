@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 const FollowBtn = ({ followers, setFollowers }) => {
   const handleClick = () => {
@@ -6,7 +7,11 @@ const FollowBtn = ({ followers, setFollowers }) => {
   };
   return (
     <>
-      <Button variant="primary" onClick={handleClick}>
+      <Button
+        variant="primary"
+        onClick={handleClick}
+        style={{ width: "100px", fontWeight: "600" }}
+      >
         Follow
       </Button>
     </>

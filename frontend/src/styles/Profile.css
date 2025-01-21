@@ -1,0 +1,46 @@
+.username {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  margin-top: 20px;
+}
+.profile_photo {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 100px;
+}
+.profile_stats {
+  display: flex;
+  gap: 20px;
+}
+.profile_photo img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.profile_follows {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  margin-left: 200px;
+}
+.profile_info {
+  text-align: center;
+  margin-top: 40px;
+  margin-right: 300px;
+}
+.profile_btns {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 60px;
+}

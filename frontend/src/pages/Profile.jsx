@@ -36,36 +36,51 @@ const Profile = () => {
       <ToastContainer />
       <div className="profile">
         <div className="username">
-          <h4>hard_coded</h4>
+          <h4>Instagram User</h4>
         </div>
+
         <div className="profile_photo">
           <img
             src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
             alt="profile"
           />
-          <div className="profile_posts">
-            <h4>2</h4>
-            <p>Posts</p>
+          <div className="profile_stats">
+            <div className="profile_posts">
+              <h4 style={{ textAlign: "center" }}>2</h4>
+              <p>Posts</p>
+            </div>
+            <div className="profile_followers">
+              <h4 style={{ textAlign: "center" }}>{followers}</h4>
+              <p>Followers</p>
+            </div>
+            <div className="profile_following">
+              <h4 style={{ textAlign: "center" }}>10</h4>
+              <p>Following</p>
+            </div>
           </div>
-          <div className="profile_followers">
-            <h4>2</h4>
-            <p>Followers</p>
-            <Follow followers={followers} setFollowers={setFollowers} />
-          </div>
-          <div className="profile_following">
-            <h4>10</h4>
-            <p>Following</p>
-            <Unfollow followers={followers} setFollowers={setFollowers} />
-          </div>
+        </div>
+        <div className="profile_follows">
+          <Follow followers={followers} setFollowers={setFollowers} />
+          <Unfollow followers={followers} setFollowers={setFollowers} />
         </div>
         <div className="profile_info">
-          <h4>hard_coded</h4>
-          <p>hard_coded</p>
-          <p>hard_coded</p>
+          <p>This is my bio</p>
+          <p>Welcome to my page</p>
+          <p>I code for a living</p>
         </div>
         <div className="profile_btns">
-          <button>Add Post</button>
-          <button>Logout</button>
+          <Button
+            variant="primary"
+            style={{ width: "200px", fontWeight: "600" }}
+          >
+            Add Post
+          </Button>
+          <Button
+            variant="primary"
+            style={{ width: "200px", fontWeight: "600" }}
+          >
+            Logout
+          </Button>
         </div>
         <div className="photos">image 1 image 2</div>
       </div>

@@ -9,7 +9,11 @@ const UnfollowBtn = ({ followers, setFollowers }) => {
   };
   return (
     <>
-      <Button variant="primary" onClick={handleClick}>
+      <Button
+        variant="primary"
+        onClick={handleClick}
+        style={{ width: "100px", fontWeight: "600" }}
+      >
         unfollow
       </Button>
     </>
