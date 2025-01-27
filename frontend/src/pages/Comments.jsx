@@ -26,6 +26,7 @@ const Comments = () => {
       <div className="comments">
         <div className="comment">
           <h2>Comments</h2>
+          <p>This is where the comments display</p>
           {comments.map((comment) => (
             <div key={comment.id}>
               <p>{comment.comment}</p>

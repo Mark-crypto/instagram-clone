@@ -72,6 +72,7 @@ const Profile = () => {
           <Button
             variant="primary"
             style={{ width: "200px", fontWeight: "600" }}
+            onClick={handleShow}
           >
             Add Post
           </Button>
@@ -84,23 +85,14 @@ const Profile = () => {
         </div>
         <div className="photos">image 1 image 2</div>
       </div>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add Post</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+        <Modal.Body>
+          <Post />
+        </Modal.Body>
       </Modal>
     </>
   );
