@@ -1,5 +1,5 @@
 import AddComment from "../components/AddComment";
-import Comments from "../components/Comments";
+import Comments from "./Comments";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../styles/SinglePost.css";

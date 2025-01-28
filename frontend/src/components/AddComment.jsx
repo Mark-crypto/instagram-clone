@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
-import CommentValidation from "../schemas/commentSchema";
+import CommentValidation from "../schemas/commentsSchema";
 
 const AddComment = () => {
   const formik = useFormik({

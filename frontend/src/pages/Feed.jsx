@@ -1,9 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import SinglePost from "./SinglePost";
 
 const Feed = () => {
-  return <div>Feed</div>;
+  return (
+    <>
+      <SinglePost />
+    </>
+  );
 };
 
 export default Feed;
