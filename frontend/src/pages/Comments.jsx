@@ -25,13 +25,13 @@ const Comments = () => {
       <ToastContainer />
       <div className="comments">
         <div className="comment">
-          <h2>Comments</h2>
-          <p>This is where the comments display</p>
-          {comments.map((comment) => (
+          <h6>instagram_username</h6>
+          <p>What a nice view</p>
+          {/* {comments.map((comment) => (
             <div key={comment.id}>
               <p>{comment.comment}</p>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     </>

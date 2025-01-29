@@ -10,6 +10,9 @@ const AddComment = () => {
     },
     validationSchema: CommentValidation,
   });
+  const handleSubmit = () => {
+    console.log("submitted");
+  };
   return (
     <>
       <Form>
