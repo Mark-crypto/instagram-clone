@@ -15,14 +15,14 @@ export const getComments = async (req, res) => {
   }
 };
 export const addComment = async (req, res) => {
-  const { comment } = req.body;
-  if (!comment) {
+  const { email, comment } = req.body;
+  if (!comment || !email) {
     res.status(400).send({ error: "Bad request" });
     return;
   }
   try {
-    const query = `INSERT INTO comments (comment) VALUES (?)`;
-    connection.query(query, [comment], (err, result) => {
+    const query = `INSERT INTO comments (email,comment) VALUES (?,?)`;
+    connection.query(query, [email, comment], (err, result) => {
       if (err) {
         res.status(500).send({ error: "Internal server error" });
       } else {
