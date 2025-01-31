@@ -1,8 +1,7 @@
-import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 import CommentValidation from "../schemas/commentsSchema";
-import React from "react";
+
 import { ToastContainer, toast } from "react-toastify";
 
 const AddComment = () => {

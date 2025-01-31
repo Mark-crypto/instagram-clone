@@ -28,7 +28,7 @@ const Profile = () => {
         toast.error("Failed to fetch profile");
       }
     };
-    //fetchProfile();
+    fetchProfile();
     console.log("fetching profile");
   }, []);
   return (
