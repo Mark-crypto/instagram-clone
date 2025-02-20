@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 import PostValidation from "../schemas/postSchema.js";
@@ -8,6 +8,8 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
 const Post = () => {
+  const [error, setError] = useState(false);
+
   const image =
     "https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png";
   const formik = useFormik({
@@ -35,11 +37,16 @@ const Post = () => {
         }
       } catch (error) {
         toast.error("Something went wrong");
+        setError(true);
       }
     };
     //post()
     console.log("Submitted");
   };
+
+  if (error) {
+    return toast.error("Something went wrong");
+  }
   return (
     <>
       <ToastContainer />

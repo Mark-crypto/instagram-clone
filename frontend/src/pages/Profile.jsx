@@ -12,7 +12,7 @@ import Unfollow from "../components/UnfollowBtn";
 const Profile = () => {
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
   const [followers, setFollowers] = useState(0);
 
@@ -23,14 +23,24 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const response = await axios.get("http://localhost:3000/profile");
+        setLoading(false);
         setProfile(response.data);
       } catch (error) {
         toast.error("Failed to fetch profile");
+        setError(true);
       }
     };
     fetchProfile();
     console.log("fetching profile");
   }, []);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return toast.error("Failed to fetch profile");
+  }
   return (
     <>
       <ToastContainer />
@@ -50,7 +60,7 @@ const Profile = () => {
               <p>Posts</p>
             </div>
             <div className="profile_followers">
-              <h4 style={{ textAlign: "center" }}>{followers}</h4>
+              <h4 style={{ textAlign: "center" }}>{profile.followers}</h4>
               <p>Followers</p>
             </div>
             <div className="profile_following">
@@ -60,8 +70,8 @@ const Profile = () => {
           </div>
         </div>
         <div className="profile_follows">
-          <Follow followers={followers} setFollowers={setFollowers} />
-          <Unfollow followers={followers} setFollowers={setFollowers} />
+          <Follow followers={profile.followers} setFollowers={setFollowers} />
+          <Unfollow followers={profile.followers} setFollowers={setFollowers} />
         </div>
         <div className="profile_info">
           <p>This is my bio</p>

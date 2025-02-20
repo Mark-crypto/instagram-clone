@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { FaFacebook } from "react-icons/fa";
 import "../styles/Registration.css";
@@ -11,6 +11,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
+  const [error, setError] = useState(false);
   const image =
     "https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png";
   const formik = useFormik({
@@ -68,12 +69,17 @@ const Registration = () => {
           }
         } catch (error) {
           toast.error("Invalid user input");
+          setError(true);
         }
       };
       //registration()
     }, [hashedPassword]);
     console.log("Submitted");
   };
+
+  if (error) {
+    return toast.error("Invalid user input");
+  }
   return (
     <>
       <ToastContainer />

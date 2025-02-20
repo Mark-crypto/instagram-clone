@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+  // const [newComment, setNewComment] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -12,14 +12,23 @@ const Comments = () => {
     const fetchComments = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/comments");
+        setLoading(false);
         setComments(response.data);
       } catch (error) {
         toast.error("Failed to fetch comments");
+        setError(true);
       }
     };
     //fetchComments();
     console.log("fetching comments");
   }, []);
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return toast.error("Failed to fetch comments");
+  }
   return (
     <>
       <ToastContainer />
