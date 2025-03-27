@@ -5,6 +5,10 @@ import Registration from "./pages/Registration.jsx";
 import Comments from "./pages/Comments.jsx";
 import Profile from "./pages/Profile.jsx";
 import Post from "./pages/Post.jsx";
+import io from "socket.io-client";
+import { useEffect, useState } from "react";
+
+const socket = io.connect("http://localhost:3001");
 
 export const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -30,6 +34,21 @@ export const router = createBrowserRouter([
   },
 ]);
 const App = () => {
+  const [room, setRoom] = useState("");
+  const [message, setMessage] = useState("");
+  const sendMessage = () => {
+    socket.emit("message", { message, room });
+  };
+  const joinRoom = () => {
+    if (room !== "") {
+      socket.emit("join_room", room);
+    }
+  };
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      alert(data.message);
+    });
+  }, [socket]);
   return <div>App</div>;
 };
 
